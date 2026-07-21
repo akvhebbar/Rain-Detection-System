@@ -50,19 +50,19 @@ This project bridges that gap by implementing a real-time, low-cost embedded sys
 
 > **Note:** The rain sensor sensing pad connects directly to the two input pins of the YL-38 control module board.
 >
-> #### How It Works
-**Conductivity Principle:** In dry conditions, the air gap between the copper tracks on the FC-37 sensing pad provides near-infinite electrical resistance.
-**Resistance Drop:** When water droplets fall on the pad, water bridges the conductive tracks, significantly lowering the electrical resistance across the terminals.
-**Analog Signal Processing:** The LM393 comparator module translates this variable resistance into an analog output voltage (0–5V). The Arduino reads this value using its 10-bit Analog-to-Digital Converter (ADC) on pin A0 (0–1023).
-**Value Mapping & Thresholding:** The raw reading is mapped into a normalized dynamic range. If mapped wetness exceeds the set = 10 threshold, digital Pin 5 outputs a HIGH signal (5V), turning on the active buzzer.
+> ## How It Works
+1. **Conductivity Principle:** In dry conditions, the air gap between the copper tracks on the FC-37 sensing pad provides near-infinite electrical resistance.
+2. **Resistance Drop:** When water droplets fall on the pad, water bridges the conductive tracks, significantly lowering the electrical resistance across the terminals.
+3. **Analog Signal Processing:** The LM393 comparator module translates this variable resistance into an analog output voltage (0–5V). The Arduino reads this value using its 10-bit Analog-to-Digital Converter (ADC) on pin A0 (0–1023).
+4. **Value Mapping & Thresholding:** The raw reading is mapped into a normalized dynamic range. If mapped wetness exceeds the set = 10 threshold, digital Pin 5 outputs a HIGH signal (5V), turning on the active buzzer.
 
 ## 🧪 Results & Calibration
-**Dry State:** Raw analog values range between 700 – 900 (5V rail), mapping below the trigger limit. The buzzer remains silent.
-**Wet / Rain State:** Droplets lower raw readings to 100 – 300, driving the mapped output above set = 10. The system activates the buzzer in under 200ms.
-**Sensitivity Calibration:** The onboard blue potentiometer on the LM393 comparator can be manually adjusted to tune sensitivity for local environmental conditions.
+1. **Dry State:** Raw analog values range between 700 – 900 (5V rail), mapping below the trigger limit. The buzzer remains silent.
+2. **Wet / Rain State:** Droplets lower raw readings to 100 – 300, driving the mapped output above set = 10. The system activates the buzzer in under 200ms.
+3. **Sensitivity Calibration:** The onboard blue potentiometer on the LM393 comparator can be manually adjusted to tune sensitivity for local environmental conditions.
 
 ## 🚀 Limitations & Future Scope
 #### Current Limitations
-**Binary Alert Only:** Detects the presence of water but does not measure precise rainfall volume or rate (mm/hr).
-**Local Scope:** Lacks Wi-Fi/Bluetooth capabilities for long-range remote notifications.
-**Sensor Oxidation:** Continuous outdoor exposure can degrade exposed copper tracks over time.
+1. **Binary Alert Only:** Detects the presence of water but does not measure precise rainfall volume or rate (mm/hr).
+2. **Local Scope:** Lacks Wi-Fi/Bluetooth capabilities for long-range remote notifications.
+3. **Sensor Oxidation:** Continuous outdoor exposure can degrade exposed copper tracks over time.
